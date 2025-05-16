@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Logbook Loans - Sidu International</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: url('logbook.jpg') no-repeat center center/cover;
+      margin: 0;
+      padding: 0;
+      animation: fadeIn 1.5s ease;
+    }
+    header { background: rgba(0, 153, 204, 0.9); color: white; padding: 20px; text-align: center; }
+    section {
+      background: rgba(255,255,255,0.95);
+      max-width: 800px; margin: 30px auto; padding: 25px;
+      border-radius: 12px; box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      animation: slideUp 1s ease-out;
+    }
+    .calculator input, .calculator select, button {
+      width: 100%; padding: 10px; margin: 10px 0; border-radius: 5px;
+    }
+    button { background: goldenrod; color: white; font-weight: bold; border: none; cursor: pointer; }
+    footer { text-align: center; padding: 20px; background: #003f66; color: white; }
+    @keyframes slideUp { from {opacity:0; transform:translateY(40px);} to {opacity:1; transform:translateY(0);} }
+    @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Logbook Loans</h1>
+</header>
+
+<section>
+  <h2>Need Cash? Use Your Car as Security</h2>
+  <p>
+    Get instant loans using your vehicle logbook. Keep driving your car while repaying. Quick, flexible, and secure.
+  </p>
+  <ul>
+    <li>Loan amounts: Ksh 20,000 – 500,000</li>
+    <li>Monthly interest: 8%</li>
+    <li>Vehicle logbook required</li>
+    <li>Flexible repayment terms</li>
+  </ul>
+
+  <div class="calculator">
+    <h3>Loan Calculator</h3>
+    <input type="number" id="loanAmount" placeholder="Enter loan amount (Ksh)">
+    <input type="number" id="repayMonths" placeholder="Repayment period (months)">
+    <button onclick="calculate()">Calculate</button>
+    <div id="result"></div>
+  </div>
+</section>
+
+<footer>
+  © 2025 Sidu International Ltd – “Bridging the growth you can’t acquire on your own”
+</footer>
+
+<script>
+  function calculate() {
+    let amount = parseFloat(document.getElementById("loanAmount").value);
+    let months = parseInt(document.getElementById("repayMonths").value);
+    let rate = 8;
+
+    if (!amount || !months) return document.getElementById("result").innerText = "Fill in all fields.";
+    let interest = amount * rate / 100 * months;
+    let total = amount + interest;
+    let monthly = total / months;
+
+    document.getElementById("result").innerHTML = `
+      <strong>Interest:</strong> Ksh ${interest.toFixed(2)}<br>
+      <strong>Total Payable:</strong> Ksh ${total.toFixed(2)}<br>
+      <strong>Monthly Payment:</strong> Ksh ${monthly.toFixed(2)}
+    `;
+  }
+</script>
+</body>
+</html>
