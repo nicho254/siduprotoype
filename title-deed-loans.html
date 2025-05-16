@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title Deed Loans - SIDU</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: url('title.png') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      color: #333;
+      animation: fadeIn 1s ease-in;
+    }
+    header {
+      background-color: #007bb5;
+      color: white;
+      padding: 30px;
+      text-align: center;
+    }
+    section {
+      background-color: rgba(255, 255, 255, 0.95);
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.15);
+      animation: slideUp 1s ease-in-out;
+    }
+    .calculator input, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: goldenrod;
+      color: white;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    footer {
+      background-color: #003f66;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    @keyframes slideUp {
+      from {opacity: 0; transform: translateY(40px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Title Deed Loans</h1>
+    <p>Secure loans using your land's title deed</p>
+  </header>
+
+  <section>
+    <h2>About This Loan</h2>
+    <p>Get up to Ksh 5,000,000 by using your title deed as collateral. No sale of land required, just secure funding when you need it most.</p>
+    <ul>
+      <li>Monthly Interest Rate: <strong>5%</strong></li>
+      <li>Collateral: Title Deed (Land)</li>
+      <li>Repayment: Up to 12 months</li>
+    </ul>
+
+    <h3>Loan Calculator</h3>
+    <input type="number" id="amount" placeholder="Enter loan amount (Ksh)">
+    <input type="number" id="months" placeholder="Repayment months">
+    <button onclick="calculate()">Calculate</button>
+    <div id="result"></div>
+  </section>
+
+  <footer>
+    &copy; 2025 SIDU International Ltd — “The wicked borrow, but do not repay.” Psalm 37:21<br>
+    <em>Bridging the growth you can’t acquire on your own</em>
+  </footer>
+
+  <script>
+    function calculate() {
+      let amount = parseFloat(document.getElementById("amount").value);
+      let months = parseInt(document.getElementById("months").value);
+      const rate = 5;
+      if (!amount || !months) {
+        return document.getElementById("result").innerHTML = "Fill all fields.";
+      }
+      let interest = (amount * rate / 100) * months;
+      let total = amount + interest;
+      let monthly = total / months;
+      document.getElementById("result").innerHTML = `
+        <p><strong>Total Interest:</strong> Ksh ${interest.toFixed(2)}</p>
+        <p><strong>Total Payable:</strong> Ksh ${total.toFixed(2)}</p>
+        <p><strong>Monthly Installment:</strong> Ksh ${monthly.toFixed(2)}</p>`;
+    }
+  </script>
+</body>
+</html>
